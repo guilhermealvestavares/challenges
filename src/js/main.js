@@ -7,6 +7,8 @@ $(".inputBlock__dog--button").click(function() {
 colorSet();
 fontSet();
 getBreed();
+namePetSet();
+validaCampos();
 });
 
 function colorSet(){
@@ -17,6 +19,13 @@ function fontSet(){
     let selectFonts = document.querySelector(".inputBlock__fonts").value;
     textDescription.style.fontFamily = selectFonts;
 }
+
+function namePetSet(){
+    let nomePet = document.getElementById("textDog");
+    document.querySelector(".photoBlock__description").innerHTML =nomePet.value;
+}
+
+
 
 function getBreed(){
 let urlStr = "https://dog.ceo/api/breeds/list/all";
