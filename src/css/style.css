@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Gugi|Lato|Open+Sans|Roboto|ZCOOL+KuaiLe');
+
+.centralize{
+    margin:0 auto;
+    text-align: center;
+}
+
+.inputBlock .custom-select{
+    width:140px;
+}
+
+.paddingPattern{
+    padding:20px 0 20px 0;
+}
+.photoBlock__photo{
+    width:300px;
+    height:200px;
+}
+.photoBlock__description{
+z-index:999;
+margin-top:-50px;
+}
+
+.inputBlock{
+    display:Flex;
+    justify-content: space-between;
+    width:70%;
+}
+
+@media (max-width: 720px) {
+    .inputBlock{display:block;}
+    .inputBlock .custom-select{width:320px;margin-top:5px;}
+    .inputBlock__dog{margin-top:20px;}
+ }
+
+.inputBlock__dog{
+    display: flex;
+}
+.inputBlock__dog--text{
+    width:210px
+}
+
+.inputBlock__dog--button{
+margin-left:20px;
+}
