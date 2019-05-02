@@ -111,15 +111,14 @@ function getInfosBreed() {
 function saveInfosColor() {
     $('.inputBlock__colors').change(function() {
         localStorage.setItem('color', this.value); 
-       
-        if(localStorage.getItem("color")) 
-        localStorage.setItem('color',textDescription.style.color)
     })
 }
 
 function getInfosColor() {
     if (localStorage.getItem('color')) {
         $('.inputBlock__colors').val(localStorage.getItem('color'));
+        document.querySelector(".photoBlock__description").style.color = localStorage.getItem('color')
+
     }
 }
 //salvando opções de fonte no localstorage
@@ -131,6 +130,7 @@ function saveInfosFont() {
 function getInfosFont() {
     if (localStorage.getItem('font')) {
         $('.inputBlock__fonts').val(localStorage.getItem('font'));
+        document.querySelector(".photoBlock__description").style.fontFamily = localStorage.getItem('font')
     }
 }
 //salvando opções de nome no localstorage
