@@ -3,11 +3,14 @@ var breed = document.querySelector(".inputBlock__breeds");
 var color = document.querySelector(".inputBlock__colors");
 var font = document.querySelector(".inputBlock__fonts");
 var photoDog = document.querySelector(".photoBlock__photo");
+var namePet = document.querySelector(".inputBlock__dog--text");
+
 
 
 window.onload = init();
 
 function init() {
+    getImage(); 
     getBreed();
     saveInfosBreed();
     getInfosBreed();
@@ -17,20 +20,22 @@ function init() {
     getInfosColor();
     saveInfosName();
     getInfosName();
-    getImage(); 
+    getHora();
+  
 }
 
 $(".inputBlock__dog--button").click(function() {
 
     if(breed.value != "none" && color.value != "none" && font.value != "none"){
         getBreedPhoto();
+        saveImage();
         colorSet();
         fontSet();
         namePetSet();
-        saveImage();
-        alert("sucesso")
+
+         document.querySelector(".status").innerHTML = "sucesso"
         }else{
-        alert("preencha todos os campos")
+        document.querySelector(".status").innerHTML = "preencha todos os campos"
         }
         
 
@@ -50,7 +55,12 @@ function fontSet(){
 
 function namePetSet(){
     let nomePet = document.getElementById("textDog");
-    document.querySelector(".photoBlock__description").innerHTML =nomePet.value;
+    if(nomePet.value == ""){
+        document.querySelector(".photoBlock__description").innerHTML ="Pet sem nome";
+    }else{
+        document.querySelector(".photoBlock__description").innerHTML =nomePet.value;
+    }
+    
 }
 
 //função para consumir raça e popular o select
@@ -113,9 +123,13 @@ function getInfosBreed() {
 //salvando opções de cor no localstorage
 function saveInfosColor() {
     $('.inputBlock__colors').change(function() {
-        localStorage.setItem('color', this.value);
+        localStorage.setItem('color', this.value); 
+       
+        if(localStorage.getItem("color")) 
+        localStorage.setItem('color',textDescription.style.color)
     })
 }
+
 function getInfosColor() {
     if (localStorage.getItem('color')) {
         $('.inputBlock__colors').val(localStorage.getItem('color'));
@@ -137,13 +151,14 @@ function getInfosFont() {
 
 //salvando opções de nome no localstorage
 function saveInfosName() {
-    $('.inputBlock__dog--text').change(function() {
-        localStorage.setItem('name', this.textContent);
+    $('#textDog').on('keyup', function() {
+        localStorage.setItem('name', this.value);
     })
 }
 function getInfosName() {
     if (localStorage.getItem('name')) {
         $('.photoBlock__description').text(localStorage.getItem('name'));
+        $('#textDog').val(localStorage.getItem('name'));
     }
 }
 
@@ -161,3 +176,15 @@ function getImage() {
     }
 }
 
+function getHora(){
+   
+    let data = new Date();
+    let dia = data.getDate(); 
+    var mes = data.getMonth() +1; 
+    let hora = data.getHours();
+    let minutos = data.getMinutes();
+    localStorage.setItem("horario",dia +"/"+ mes +" "+ hora +":"+minutos)
+   
+    if (localStorage.getItem('horario'))
+    $(".inputHora").text(localStorage.getItem('horario'));
+}
