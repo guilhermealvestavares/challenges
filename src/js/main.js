@@ -4,9 +4,6 @@ var color = document.querySelector(".inputBlock__colors");
 var font = document.querySelector(".inputBlock__fonts");
 var photoDog = document.querySelector(".photoBlock__photo");
 var namePet = document.querySelector(".inputBlock__dog--text");
-
-
-
 window.onload = init();
 
 function init() {
@@ -23,7 +20,6 @@ function init() {
     getHora();
   
 }
-
 $(".inputBlock__dog--button").click(function() {
 
     if(breed.value != "none" && color.value != "none" && font.value != "none"){
@@ -37,11 +33,6 @@ $(".inputBlock__dog--button").click(function() {
         }else{
         document.querySelector(".status").innerHTML = "preencha todos os campos"
         }
-        
-
-      
-        
-    
 });
 
 function colorSet(){
@@ -83,8 +74,6 @@ function getBreed(){
         }
     });
 }
-
-
 //função para consumir imagem
 function getBreedPhoto(){
     let urlStrPhotos = "https://dog.ceo/api/breed/"+breed.value+"/images";
@@ -103,7 +92,6 @@ function getBreedPhoto(){
         }
     });
 }
-
 //salvando opções de raça no localstorage
 function saveInfosBreed() {
     $('.inputBlock__breeds').change(function() {
@@ -119,7 +107,6 @@ function getInfosBreed() {
         }
     });
 }
-
 //salvando opções de cor no localstorage
 function saveInfosColor() {
     $('.inputBlock__colors').change(function() {
@@ -135,8 +122,6 @@ function getInfosColor() {
         $('.inputBlock__colors').val(localStorage.getItem('color'));
     }
 }
-
-
 //salvando opções de fonte no localstorage
 function saveInfosFont() {
     $('.inputBlock__fonts').change(function() {
@@ -148,7 +133,6 @@ function getInfosFont() {
         $('.inputBlock__fonts').val(localStorage.getItem('font'));
     }
 }
-
 //salvando opções de nome no localstorage
 function saveInfosName() {
     $('#textDog').on('keyup', function() {
@@ -161,7 +145,6 @@ function getInfosName() {
         $('#textDog').val(localStorage.getItem('name'));
     }
 }
-
 //salvando foto no localstorage
 function saveImage() {
     $(document).ajaxComplete(function (event, xhr, settings) {
@@ -175,16 +158,13 @@ function getImage() {
         $('.photoBlock__photo').attr('src', localStorage.getItem('image'));
     }
 }
-
-function getHora(){
-   
+function getHora(){ 
     let data = new Date();
     let dia = data.getDate(); 
     var mes = data.getMonth() +1; 
     let hora = data.getHours();
     let minutos = data.getMinutes();
     localStorage.setItem("horario",dia +"/"+ mes +" "+ hora +":"+minutos)
-   
     if (localStorage.getItem('horario'))
     $(".inputHora").text(localStorage.getItem('horario'));
 }
