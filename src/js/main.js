@@ -6,10 +6,10 @@ var photoDog = document.querySelector(".photoBlock__photo");
 window.onload = getBreed();
 
 $(".inputBlock__dog--button").click(function() {
+getBreedPhoto();
 colorSet();
 fontSet();
 namePetSet();
-getBreedPhoto();
 });
 
 function colorSet(){
@@ -57,12 +57,26 @@ function getBreedPhoto(){
             let numberImagesRandom = (Math.round(Math.random() * (numberImages- 0 + 1) + 0));
             photoDog.src = Object.entries(dataPhoto.message)[numberImagesRandom][1];
 
+            //LOCALSTORAGE
+            $('.inputBlock__breeds').on('change', () => {
+                localStorage.setItem('key', breed.val);
+            })  
+            if(localStorage.getItem('key')){
+                $('.inputBlock__breeds').text(localStorage.getItem(key));
+            }else{
+                console.log("não existe")
+            }
+           
+
         },
         error : function(erro){
             console.log(erro);
         }
     });
 }  
+
+
+
     
 
 
