@@ -28,7 +28,6 @@ $(".inputBlock__dog--button").click(function() {
         colorSet();
         fontSet();
         namePetSet();
-
          document.querySelector(".status").innerHTML = "sucesso"
         }else{
         document.querySelector(".status").innerHTML = "preencha todos os campos"
