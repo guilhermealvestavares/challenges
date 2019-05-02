@@ -1,5 +1,7 @@
 var textDescription = document.querySelector(".photoBlock__description");
 var breed = document.querySelector(".inputBlock__breeds");
+var color = document.querySelector(".inputBlock__colors");
+var font = document.querySelector(".inputBlock__fonts");
 var photoDog = document.querySelector(".photoBlock__photo");
 
 
@@ -11,18 +13,30 @@ function init() {
     getInfosBreed();
     saveInfosFont();
     getInfosFont();
+    saveInfosColor();
+    getInfosColor();
     saveInfosName();
     getInfosName();
-    getImage();
-   
+    getImage(); 
 }
 
 $(".inputBlock__dog--button").click(function() {
-getBreedPhoto();
-colorSet();
-fontSet();
-namePetSet();
-saveImage();
+
+    if(breed.value != "none" && color.value != "none" && font.value != "none"){
+        getBreedPhoto();
+        colorSet();
+        fontSet();
+        namePetSet();
+        saveImage();
+        alert("sucesso")
+        }else{
+        alert("preencha todos os campos")
+        }
+        
+
+      
+        
+    
 });
 
 function colorSet(){
@@ -123,13 +137,13 @@ function getInfosFont() {
 
 //salvando opções de nome no localstorage
 function saveInfosName() {
-    $('.photoBlock__description').on(function() {
-        localStorage.setItem('name', this.value);
+    $('.inputBlock__dog--text').change(function() {
+        localStorage.setItem('name', this.textContent);
     })
 }
 function getInfosName() {
     if (localStorage.getItem('name')) {
-        $('.photoBlock__description').val(localStorage.getItem('name'));
+        $('.photoBlock__description').text(localStorage.getItem('name'));
     }
 }
 
@@ -146,3 +160,4 @@ function getImage() {
         $('.photoBlock__photo').attr('src', localStorage.getItem('image'));
     }
 }
+
